@@ -7,11 +7,11 @@ It started as a fork because we needed Laravel 6.0 compatibility. I will try to 
 
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
 
-[![Build Status](https://github.com/madnest/phpzipper/workflows/Tests/badge.svg)](https://github.com/madnest/phpzipper/actions)
+[![Build Status](https://github.com/usefulsomebody/phpzipper/workflows/Tests/badge.svg)](https://github.com/usefulsomebody/phpzipper/actions)
 
 ## Installation
 
-1. `"madnest/phpzipper": "1.0.x"` can be installed by running `composer require madnest/phpzipper`
+1. `"usefulsomebody/phpzipper": "1.0.x"` can be installed by running `composer require usefulsomebody/phpzipper`
 
 2. Optionally when using with Laravel 8, 7 or 6, go to `app/config/app.php`
 
