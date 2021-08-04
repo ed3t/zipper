@@ -3,28 +3,28 @@
 This is a very early stage package that aims to become a successor of [chumper/zipper](https://github.com/Chumper/Zipper) package.
 It started as a fork because we needed Laravel 6.0 compatibility. I will try to make it compatible with Laravel 6 and up.
 
-# PhpZipper
+# Zipper
 
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
 
-[![Build Status](https://github.com/usefulsomebody/phpzipper/workflows/Tests/badge.svg)](https://github.com/usefulsomebody/phpzipper/actions)
+[![Build Status](https://github.com/usefulsomebody/zipper/workflows/Tests/badge.svg)](https://github.com/usefulsomebody/zipper/actions)
 
 ## Installation
 
-1. `"usefulsomebody/phpzipper": "1.0.x"` can be installed by running `composer require usefulsomebody/phpzipper`
+1. `"usefulsomebody/zipper": "1.0.x"` can be installed by running `composer require usefulsomebody/zipper`
 
 2. Optionally when using with Laravel 8, 7 or 6, go to `app/config/app.php`
 
--   add to providers `Usefulsomebody\PhpZipper\PhpZipperServiceProvider::class`
--   add to aliases `'PhpZipper' => Usefulsomebody\PhpZipper\PhpZipper::class`
+-   add to providers `Usefulsomebody\Zipper\ZipperServiceProvider::class`
+-   add to aliases `'Zipper' => Usefulsomebody\Zipper\Zipper::class`
 
-You can now access PhpZipper with the `PhpZipper` alias.
+You can now access Zipper with the `Zipper` alias.
 
-## Simple Laravel example by using PhpZipper facade
+## Simple Laravel example by using Zipper facade
 
 ```php
 $files = glob('public/files/*');
-PhpZipper::make('public/test.zip')->add($files)->close();
+Zipper::make('public/test.zip')->add($files)->close();
 ```
 
 -   by default the package will create the `test.zip` in the project route folder but in the example above we changed it to `project_route/public/`.
@@ -32,7 +32,7 @@ PhpZipper::make('public/test.zip')->add($files)->close();
 ## Another example
 
 ```php
-$zipper = new \Usefulsomebody\PhpZipper\PhpZipper;
+$zipper = new \Usefulsomebody\Zipper\Zipper;
 
 $zipper->make('test.zip')->folder('test')->add('composer.json');
 $zipper->zip('test.zip')->folder('test')->add('composer.json','test');
@@ -48,7 +48,7 @@ $zipper->folder('mySuperPackage')->add(
 
 $zipper->getFileContent('mySuperPackage/composer.json');
 
-$zipper->make('test.zip')->extractTo('', ['mySuperPackage/composer.json'], PhpZipper::WHITELIST);
+$zipper->make('test.zip')->extractTo('', ['mySuperPackage/composer.json'], Zipper::WHITELIST);
 
 $zipper->close();
 ```
@@ -83,8 +83,8 @@ removes a single file or an array of files from the zip.
 Specify a folder to 'add files to' or 'remove files from' from the zip, example
 
 ```php
-PhpZipper::make('test.zip')->folder('test')->add('composer.json');
-PhpZipper::make('test.zip')->folder('test')->remove('composer.json');
+Zipper::make('test.zip')->folder('test')->add('composer.json');
+Zipper::make('test.zip')->folder('test')->remove('composer.json');
 ```
 
 ## listFiles($regexFilter = null)
@@ -96,8 +96,8 @@ Lists all files within archive (if no filter pattern is provided). Use `$regexFi
 Example: Return all files/folders ending/not ending with '.log' pattern (case insensitive). This will return matches in sub folders and their sub folders also
 
 ```php
-$logFiles = PhpZipper::make('test.zip')->listFiles('/\.log$/i');
-$notLogFiles = PhpZipper::make('test.zip')->listFiles('/^(?!.*\.log).*$/i');
+$logFiles = Zipper::make('test.zip')->listFiles('/\.log$/i');
+$notLogFiles = Zipper::make('test.zip')->listFiles('/^(?!.*\.log).*$/i');
 ```
 
 ## home()
@@ -125,10 +125,10 @@ closes the zip and writes all changes.
 Extracts the content of the zip archive to the specified location, for example
 
 ```php
-PhpZipper::make('test.zip')->folder('test')->extractTo('foo');
+Zipper::make('test.zip')->folder('test')->extractTo('foo');
 ```
 
-This will go into the folder `test` in the zip file and extract the content of that folder only to the folder `foo`, this is equal to using the `PhpZipper::WHITELIST`.
+This will go into the folder `test` in the zip file and extract the content of that folder only to the folder `foo`, this is equal to using the `Zipper::WHITELIST`.
 
 This command is really nice to get just a part of the zip file, you can also pass a 2nd & 3rd param to specify a single or an array of files that will be
 
@@ -137,29 +137,29 @@ This command is really nice to get just a part of the zip file, you can also pas
 
 white listed
 
-> **PhpZipper::WHITELIST**
+> **Zipper::WHITELIST**
 
 ```php
-PhpZipper::make('test.zip')->extractTo('public', array('vendor'), PhpZipper::WHITELIST);
+Zipper::make('test.zip')->extractTo('public', array('vendor'), Zipper::WHITELIST);
 ```
 
 Which will extract the `test.zip` into the `public` folder but **only** files/folders starting with `vendor` prefix inside the zip will be extracted.
 
 or black listed
 
-> **PhpZipper::BLACKLIST**
+> **Zipper::BLACKLIST**
 > Which will extract the `test.zip` into the `public` folder except files/folders starting with `vendor` prefix inside the zip will not be extracted.
 
 ```php
-PhpZipper::make('test.zip')->extractTo('public', array('vendor'), PhpZipper::BLACKLIST);
+Zipper::make('test.zip')->extractTo('public', array('vendor'), Zipper::BLACKLIST);
 ```
 
-> **PhpZipper::EXACT_MATCH**
+> **Zipper::EXACT_MATCH**
 
 ```php
-PhpZipper::make('test.zip')
+Zipper::make('test.zip')
     ->folder('vendor')
-    ->extractTo('public', array('composer', 'bin/phpunit'), PhpZipper::WHITELIST | PhpZipper::EXACT_MATCH);
+    ->extractTo('public', array('composer', 'bin/phpunit'), Zipper::WHITELIST | Zipper::EXACT_MATCH);
 ```
 
 Which will extract the `test.zip` into the `public` folder but **only** files/folders **exact matching names**. So this will:
@@ -167,7 +167,7 @@ Which will extract the `test.zip` into the `public` folder but **only** files/fo
 -   extract file or folder named `composer` in folder named `vendor` inside zip to `public` resulting `public/composer`
 -   extract file or folder named `bin/phpunit` in `vendor/bin/phpunit` folder inside zip to `public` resulting `public/bin/phpunit`
 
-> **NB:** extracting files/folder from zip without setting PhpZipper::EXACT_MATCH
+> **NB:** extracting files/folder from zip without setting Zipper::EXACT_MATCH
 > When zip has similar structure as below and only `test.bat` is given as whitelist/blacklist argument then `extractTo` would extract all those files and folders as they all start with given string
 
 ```
@@ -185,13 +185,13 @@ Extracts the content of the zip archive matching regular expression to the speci
 Example: extract all files ending with `.php` from `src` folder and its sub folders.
 
 ```php
-PhpZipper::make('test.zip')->folder('src')->extractMatchingRegex($path, '/\.php$/i');
+Zipper::make('test.zip')->folder('src')->extractMatchingRegex($path, '/\.php$/i');
 ```
 
 Example: extract all files **except** those ending with `test.php` from `src` folder and its sub folders.
 
 ```php
-PhpZipper::make('test.zip')->folder('src')->extractMatchingRegex($path, '/^(?!.*test\.php).*$/i');
+Zipper::make('test.zip')->folder('src')->extractMatchingRegex($path, '/^(?!.*test\.php).*$/i');
 ```
 
 ## Testing

@@ -1,18 +1,18 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper;
+namespace Usefulsomebody\Zipper;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use Usefulsomebody\PhpZipper\Repositories\RepositoryInterface;
+use Usefulsomebody\Zipper\Repositories\RepositoryInterface;
 
 /**
- * This PhpZipper class is a wrapper around the ZipArchive methods with some handy functions
+ * This Zipper class is a wrapper around the ZipArchive methods with some handy functions
  *
- * Class PhpZipper
+ * Class Zipper
  */
-class PhpZipper
+class Zipper
 {
     /**
      * Constant for extracting
@@ -80,7 +80,7 @@ class PhpZipper
      * @throws \Exception
      * @throws \InvalidArgumentException
      *
-     * @return $this PhpZipper instance
+     * @return $this Zipper instance
      */
     public function make($pathToFile, $type = 'zip')
     {
@@ -88,10 +88,10 @@ class PhpZipper
 
         $objectOrName = $type;
         if (is_string($type)) {
-            $objectOrName = 'Usefulsomebody\PhpZipper\Repositories\\' . ucwords($type) . 'Repository';
+            $objectOrName = 'Usefulsomebody\Zipper\Repositories\\' . ucwords($type) . 'Repository';
         }
 
-        if (! is_subclass_of($objectOrName, 'Usefulsomebody\PhpZipper\Repositories\RepositoryInterface')) {
+        if (! is_subclass_of($objectOrName, 'Usefulsomebody\Zipper\Repositories\RepositoryInterface')) {
             throw new \InvalidArgumentException("Class for '{$objectOrName}' must implement RepositoryInterface interface");
         }
 
@@ -249,7 +249,7 @@ class PhpZipper
      * @param $pathToAdd array|string An array or string of files and folders to add
      * @param null|mixed $fileName
      *
-     * @return $this PhpZipper instance
+     * @return $this Zipper instance
      */
     public function add($pathToAdd, $fileName = null)
     {
@@ -279,7 +279,7 @@ class PhpZipper
      *
      * @param $dirName
      *
-     * @return PhpZipper
+     * @return Zipper
      */
     public function addEmptyDir($dirName)
     {
@@ -294,7 +294,7 @@ class PhpZipper
      * @param $filename string The name of the file to create
      * @param $content string The file contents
      *
-     * @return $this PhpZipper instance
+     * @return $this Zipper instance
      */
     public function addString($filename, $content)
     {
@@ -318,7 +318,7 @@ class PhpZipper
      *
      * @param $fileToRemove array|string The path/array to the files in the zip
      *
-     * @return $this PhpZipper instance
+     * @return $this Zipper instance
      */
     public function remove($fileToRemove)
     {

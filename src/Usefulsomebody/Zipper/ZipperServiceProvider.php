@@ -1,11 +1,11 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper;
+namespace Usefulsomebody\Zipper;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 
-class PhpZipperServiceProvider extends ServiceProvider
+class ZipperServiceProvider extends ServiceProvider
 {
     /**
      * Indicates if loading of the provider is deferred.
@@ -26,15 +26,15 @@ class PhpZipperServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('phpzipper', function ($app) {
-            $return = $app->make('Usefulsomebody\PhpZipper\PhpZipper');
+        $this->app->singleton('zipper', function ($app) {
+            $return = $app->make('Usefulsomebody\Zipper\Zipper');
 
             return $return;
         });
 
         $this->app->booting(function () {
             $loader = AliasLoader::getInstance();
-            $loader->alias('PhpZipper', 'Usefulsomebody\PhpZipper\Facades\PhpZipper');
+            $loader->alias('Zipper', 'Usefulsomebody\Zipper\Facades\Zipper');
         });
     }
 
@@ -45,6 +45,6 @@ class PhpZipperServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['phpzipper'];
+        return ['zipper'];
     }
 }

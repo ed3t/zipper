@@ -1,10 +1,10 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper\Tests\Repositories;
+namespace Usefulsomebody\Zipper\Tests\Repositories;
 
 use Exception;
-use Usefulsomebody\PhpZipper\Repositories\ZipRepository;
-use Usefulsomebody\PhpZipper\Tests\TestCase;
+use Usefulsomebody\Zipper\Repositories\ZipRepository;
+use Usefulsomebody\Zipper\Tests\TestCase;
 use Mockery;
 use ZipArchive;
 

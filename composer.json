@@ -1,5 +1,5 @@
 {
-    "name": "Usefulsomebody/PhpZipper",
+    "name": "Usefulsomebody/Zipper",
     "description": "Wannabe successor of Chumper/Zipper package for Laravel",
     "type": "library",
     "license": "MIT",
@@ -23,12 +23,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Usefulsomebody\\PhpZipper\\": "src/Usefulsomebody/Php-Zipper"
+            "Usefulsomebody\\Zipper\\": "src/Usefulsomebody/Zipper"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Usefulsomebody\\PhpZipper\\Tests\\": "tests/"
+            "Usefulsomebody\\Zipper\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -41,10 +41,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Usefulsomebody\\PhpZipper\\PhpZipperServiceProvider"
+                "Usefulsomebody\\Zipper\\ZipperServiceProvider"
             ],
             "aliases": {
-                "Zipper": "Usefulsomebody\\PhpZipper\\PhpZipper"
+                "Zipper": "Usefulsomebody\\Zipper\\Zipper"
             }
         }
     },

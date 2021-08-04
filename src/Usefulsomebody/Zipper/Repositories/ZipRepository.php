@@ -1,6 +1,6 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper\Repositories;
+namespace Usefulsomebody\Zipper\Repositories;
 
 use Exception;
 use ZipArchive;

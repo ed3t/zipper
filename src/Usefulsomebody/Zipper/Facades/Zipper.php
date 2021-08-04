@@ -1,13 +1,13 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper\Facades;
+namespace Usefulsomebody\Zipper\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class PhpZipper extends Facade
+class Zipper extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'phpzipper';
+        return 'zipper';
     }
 }

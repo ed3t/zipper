@@ -1,8 +1,8 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper\Tests;
+namespace Usefulsomebody\Zipper\Tests;
 
-use Usefulsomebody\PhpZipper\Repositories\RepositoryInterface;
+use Usefulsomebody\Zipper\Repositories\RepositoryInterface;
 
 class ArrayArchive implements RepositoryInterface
 {

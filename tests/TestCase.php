@@ -1,8 +1,8 @@
 <?php
 
-namespace Usefulsomebody\PhpZipper\Tests;
+namespace Usefulsomebody\Zipper\Tests;
 
-use Usefulsomebody\PhpZipper\PhpZipperServiceProvider;
+use Usefulsomebody\Zipper\ZipperServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
@@ -20,7 +20,7 @@ abstract class TestCase extends Orchestra
     protected function getPackageProviders($app)
     {
         return [
-            PhpZipperServiceProvider::class,
+            ZipperServiceProvider::class,
         ];
     }
 }
