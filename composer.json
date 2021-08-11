@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Usefulsomebody\\Zipper\\": "src/"
+            "Usefulsomebody\\Zipper\\": "src/usefulsomebody/zipper"
         }
     },
     "autoload-dev": {
