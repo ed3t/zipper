@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Usefulsomebody\\Zipper\\": "src/usefulsomebody/zipper"
+            "Usefulsomebody\\Zipper\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Usefulsomebody\\Zipper\\Tests\\": "tests/"
+            "Usefulsomebody\\Zipper\\Tests\\": "tests"
         }
     },
     "scripts": {
